@@ -1,0 +1,41 @@
+﻿========================================================================
+MODELO CONCEITUAL (DER) - Figura 13 do documento
+Arquivo: modelo_conceitual_DER.png
+========================================================================
+
+COMO FOI FEITO
+O modelo conceitual foi elaborado a partir dos requisitos funcionais,
+das regras de negócio e do diagrama de classes (Figura 2), usando a
+notação Entidade-Relacionamento (Peter Chen):
+  - retângulos = entidades
+  - losangos   = relacionamentos
+  - elipses    = atributos (sublinhado = identificador)
+  - cardinalidades no formato (mínimo, máximo)
+
+As 7 primeiras entidades vêm das classes do diagrama de classes.
+A entidade USUÁRIO foi incluída para atender a autenticação e os
+perfis de acesso (RNF02 e RNF03).
+
+ENTIDADES
+Entidade    Identificador  Atributos
+----------  -------------  ---------------------------------------------------------------------
+Editora     id_editora     nome, cidade
+Autor       id_autor       nome
+Livro       id_livro       titulo, isbn, ano_publicacao, genero
+Exemplar    id_exemplar    cod_patrimonio, status, localizacao
+Leitor      id_leitor      nome, cpf, email, telefone, data_cadastro
+Usuário     id_usuario     login, senha_hash, perfil, ativo
+Empréstimo  id_emprestimo  data_emprestimo, data_devolucao_prevista, data_devolucao_real, status
+Reserva     id_reserva     data_reserva, posicao_fila, status
+
+RELACIONAMENTOS
+Relacionamento  Entidades              Card.  Descrição
+--------------  ---------------------  -----  --------------------------------------------------------------
+Publica         Editora - Livro        1:N    Uma editora publica vários livros; cada livro tem uma editora.
+Escreve         Autor - Livro          N:N    Um livro pode ter vários autores e um autor, vários livros.
+Possui          Livro - Exemplar       1:N    Cada livro tem um ou mais exemplares físicos.
+Refere-se       Exemplar - Empréstimo  1:N    Todo empréstimo é de um exemplar específico (RN03).
+Realiza         Leitor - Empréstimo    1:N    Um leitor pode ter vários empréstimos (RN01, RN03).
+Solicita        Leitor - Reserva       1:N    Um leitor pode ter várias reservas (RN01).
+Recebe          Livro - Reserva        1:N    A reserva é do título, não de um exemplar (RN06, RN07).
+Acessa          Leitor - Usuário       1:1    Um leitor pode ter no máximo uma conta de acesso.

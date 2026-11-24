@@ -1,0 +1,53 @@
+﻿========================================================================
+SCRIPTS SQL - Biblioteca Conectada (MySQL 8.0 ou superior)
+========================================================================
+
+ARQUIVOS
+Arquivo                       Conteúdo
+----------------------------  ---------------------------------------------------------------------
+00_script_completo.sql        Tudo em um arquivo: banco, tabelas, views, triggers e dados de teste.
+01_criar_banco.sql            Cria o schema biblioteca_conectada (apaga se já existir).
+02_criar_tabelas.sql          Cria as 9 tabelas com PK, FK, índices e restrições.
+03_criar_views.sql            Cria as 5 views de consulta (RF09 a RF13).
+04_criar_triggers.sql         Cria os 5 triggers das regras de negócio.
+05_inserir_dados_teste.sql    Insere dados de exemplo (livros, leitores, empréstimos, reserva).
+06_testar_regras_negocio.sql  Executa 12 testes automáticos e mostra PASSOU/FALHOU.
+
+COMO EXECUTAR (MySQL Workbench)
+Opção A - rápida:
+  1. Execute 00_script_completo.sql
+  2. Execute 06_testar_regras_negocio.sql
+
+Opção B - por etapa (mesmo resultado):
+  Execute 01, 02, 03, 04 e 05 nessa ordem; depois o 06.
+
+Para executar um arquivo inteiro no Workbench, abra-o e clique no
+botão de raio (Execute) ou use Ctrl+Shift+Enter.
+
+ATENÇÃO
+  - 01_criar_banco.sql e 00_script_completo.sql apagam e recriam o
+    banco biblioteca_conectada.
+  - O 06 roda os testes dentro de uma transação e desfaz tudo no final
+    (ROLLBACK), então pode ser executado várias vezes.
+
+TESTES DO 06 (regras verificadas)
+  RN01 leitor não cadastrado | RN02 exemplar indisponível |
+  RN04 prazo inválido | RN05 devolução | RN06 reserva com exemplar
+  livre | RN07 fila de reservas | RN08 atrasos | RN09 histórico |
+  RN10 exemplar reservado para o 1º da fila | RNF06 CPF duplicado
+Resultado esperado: "12 de 12 testes passaram".
+
+VIEWS E TRIGGERS CRIADOS
+Objeto                    Tipo     Regra atendida
+------------------------  -------  ----------------------------------------------------------
+vw_disponibilidade_livro  View     RF13 - situação dos exemplares por livro
+vw_emprestimos_ativos     View     RF10 - empréstimos ativos e prazos
+vw_emprestimos_atrasados  View     RF11/RN08 - empréstimos em atraso
+vw_historico_emprestimos  View     RF12/RN09 - histórico
+vw_fila_reservas          View     RF09/RN07 - fila por ordem de solicitação
+trg_emprestimo_bi         Trigger  RN02 - só empresta exemplar disponível
+trg_emprestimo_ai         Trigger  Marca exemplar EMPRESTADO e reserva ATENDIDA
+trg_emprestimo_bu         Trigger  Marca empréstimo DEVOLVIDO na devolução
+trg_emprestimo_au         Trigger  RN05/RN10 - libera exemplar ou reserva ao 1º da fila
+trg_reserva_bi            Trigger  RN06/RN07 - reserva só sem exemplar livre; posição na fila
+

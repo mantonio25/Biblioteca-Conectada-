@@ -1,0 +1,39 @@
+﻿========================================================================
+BIBLIOTECA CONECTADA
+Sistema de Gerenciamento de Empréstimos e Reservas de Livros
+IFRO Campus Ariquemes - ADS - Gerenciamento de Projetos - 2026
+========================================================================
+
+Este pacote contém o projeto completo e, separadamente, cada artefato
+do projeto, para consulta e testes.
+
+ESTRUTURA
+---------
+01_Documento/
+    Projeto_Biblioteca_Conectada.docx  -> documento completo do projeto
+
+02_Interfaces_do_Usuario/              -> 9 telas do aplicativo (Figuras 4 a 12)
+    tela_01_login.png ... tela_09_area_leitor.png
+    visao_geral_todas_as_telas.png
+
+03_Diagramas_UML/                      -> Figuras 1 a 3
+    figura_01_diagrama_casos_de_uso.png
+    figura_02_diagrama_de_classes.png
+    figura_03_diagrama_de_sequencia_emprestimo.png
+
+04_Modelagem_Banco_de_Dados/           -> Figuras 13 a 15
+    01_Modelo_Conceitual/   DER + explicação
+    02_Modelo_Logico/       tabelas, PK e FK + explicação
+    03_Modelo_Fisico/       tipos MySQL + dicionário de dados
+
+05_Scripts_SQL/                        -> scripts MySQL 8 (ver LEIAME da pasta)
+    00_script_completo.sql   (tudo em um arquivo)
+    01 a 05                  (mesmo conteúdo, separado por etapa)
+    06_testar_regras_negocio.sql  (12 testes automáticos)
+
+TESTE RÁPIDO DO BANCO (MySQL Workbench)
+---------------------------------------
+1. Abra e execute 05_Scripts_SQL/00_script_completo.sql (raio).
+2. Abra e execute 05_Scripts_SQL/06_testar_regras_negocio.sql.
+3. O resultado mostra cada regra de negócio com PASSOU/FALHOU
+   e o resumo "12 de 12 testes passaram".

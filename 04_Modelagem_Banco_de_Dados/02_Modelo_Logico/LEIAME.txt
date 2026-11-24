@@ -1,0 +1,32 @@
+﻿========================================================================
+MODELO LÓGICO - Figura 14 do documento
+Arquivo: modelo_logico.png
+========================================================================
+
+COMO FOI FEITO
+O modelo lógico converte as entidades do modelo conceitual em tabelas
+relacionais, seguindo as regras de mapeamento:
+  1. Cada entidade vira uma tabela, e o identificador vira a chave
+     primária (PK).
+  2. Relacionamento 1:N -> a chave estrangeira (FK) vai para a tabela
+     do lado "N" (ex.: id_editora em livro).
+  3. Relacionamento N:N -> cria-se uma tabela associativa com chave
+     primária composta (livro_autor).
+  4. Relacionamento 1:1 opcional -> FK com restrição UNIQUE
+     (id_leitor em usuario).
+
+Notação do diagrama: pé de galinha (crow's foot).
+  || = exatamente um     o< = zero ou muitos     |< = um ou muitos
+
+TABELAS, CHAVES PRIMÁRIAS E CHAVES ESTRANGEIRAS
+Tabela       Chave primária        Chaves estrangeiras
+-----------  --------------------  --------------------------------------------
+editora      id_editora            -
+autor        id_autor              -
+livro        id_livro              id_editora -> editora
+livro_autor  (id_livro, id_autor)  id_livro -> livro; id_autor -> autor
+exemplar     id_exemplar           id_livro -> livro
+leitor       id_leitor             -
+usuario      id_usuario            id_leitor -> leitor (opcional, único)
+emprestimo   id_emprestimo         id_leitor -> leitor; id_exemplar -> exemplar
+reserva      id_reserva            id_leitor -> leitor; id_livro -> livro

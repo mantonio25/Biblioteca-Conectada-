@@ -1,0 +1,122 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="bIQ2kY7vRVLpqYkblMo_">
+    <mxGraphModel dx="1687" dy="465" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="M33X3v2f_LC1z7xsShHe-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="interface" vertex="1">
+          <mxGeometry height="440" width="100" x="140" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="sistema de emprestimos" vertex="1">
+          <mxGeometry height="440" width="100" x="320" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="banco de dados" vertex="1">
+          <mxGeometry height="430" width="100" x="500" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-6" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" target="M33X3v2f_LC1z7xsShHe-2" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;solicitar emprestimo">
+          <mxGeometry relative="1" width="60" x="-0.5699" as="geometry">
+            <Array as="points" />
+            <mxPoint x="50" y="130" as="sourcePoint" />
+            <mxPoint x="110" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-12" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="" vertex="1">
+          <mxGeometry height="430" width="20" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-14" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" target="M33X3v2f_LC1z7xsShHe-3" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;validar solicitação">
+          <mxGeometry relative="1" width="60" x="-0.6657" as="geometry">
+            <Array as="points">
+              <mxPoint x="260.0000000000002" y="160" />
+            </Array>
+            <mxPoint x="190" y="160" as="sourcePoint" />
+            <mxPoint x="330" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-15" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;consultar cadastro do leitor">
+          <mxGeometry relative="1" width="60" x="-0.6667" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="180" />
+            </Array>
+            <mxPoint x="370" y="180" as="sourcePoint" />
+            <mxPoint x="550" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-16" edge="1" parent="1" source="M33X3v2f_LC1z7xsShHe-4" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" target="M33X3v2f_LC1z7xsShHe-3" value="retornar dados do leitor&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;">
+          <mxGeometry relative="1" width="60" x="-0.6611" as="geometry">
+            <Array as="points">
+              <mxPoint x="460.0000000000002" y="210" />
+            </Array>
+            <mxPoint x="550.5" y="210" as="sourcePoint" />
+            <mxPoint x="730.5" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-17" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; consultar disponibilidade&amp;nbsp;&lt;div&gt;do exemplar&lt;/div&gt;">
+          <mxGeometry relative="1" width="60" x="-0.6667" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="460.0000000000002" y="250" />
+            </Array>
+            <mxPoint x="370" y="250" as="sourcePoint" />
+            <mxPoint x="550" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-18" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="retornar disponibilidade&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;">
+          <mxGeometry relative="1" width="60" x="-0.6611" as="geometry">
+            <Array as="points">
+              <mxPoint x="460.0000000000002" y="280" />
+            </Array>
+            <mxPoint x="550" y="280" as="sourcePoint" />
+            <mxPoint x="370" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-19" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;registrar emprestimo e&amp;nbsp;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;data de devolução&lt;/div&gt;">
+          <mxGeometry relative="1" width="60" x="-0.6667" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="460.0000000000002" y="320" />
+            </Array>
+            <mxPoint x="370" y="320" as="sourcePoint" />
+            <mxPoint x="550" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-20" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; atualizar status">
+          <mxGeometry relative="1" width="60" x="-0.6667" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="460.0000000000002" y="360" />
+            </Array>
+            <mxPoint x="370" y="360" as="sourcePoint" />
+            <mxPoint x="550" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-21" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="confirmar registro&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;">
+          <mxGeometry relative="1" width="60" x="-0.6611" as="geometry">
+            <Array as="points">
+              <mxPoint x="460.0000000000002" y="400" />
+            </Array>
+            <mxPoint x="550" y="400" as="sourcePoint" />
+            <mxPoint x="370" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-22" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="enviar confirmação&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;">
+          <mxGeometry relative="1" width="60" x="-0.6611" as="geometry">
+            <Array as="points">
+              <mxPoint x="280.0000000000002" y="430" />
+            </Array>
+            <mxPoint x="370" y="430" as="sourcePoint" />
+            <mxPoint x="190" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M33X3v2f_LC1z7xsShHe-23" edge="1" parent="1" source="M33X3v2f_LC1z7xsShHe-2" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="exibir confirmação&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;">
+          <mxGeometry relative="1" width="60" x="-0.6611" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="450" />
+            </Array>
+            <mxPoint x="230" y="450" as="sourcePoint" />
+            <mxPoint x="50" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

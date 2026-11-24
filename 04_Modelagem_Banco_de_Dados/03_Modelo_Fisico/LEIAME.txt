@@ -1,0 +1,113 @@
+﻿========================================================================
+MODELO FÍSICO (MySQL 8) - Figura 15 do documento
+Arquivo: modelo_fisico_mysql.png
+Script que implementa este modelo: 05_Scripts_SQL/
+========================================================================
+
+COMO FOI FEITO
+O modelo físico define a implementação no MySQL 8 (motor InnoDB,
+codificação utf8mb4): tipos de dados, tamanhos, restrições e índices.
+Principais decisões:
+  - PK do tipo INT AUTO_INCREMENT (livro_autor: PK composta).
+  - NOT NULL nos campos obrigatórios (RN04: datas do empréstimo).
+  - UNIQUE em isbn, cod_patrimonio, cpf, email e login (RNF06).
+  - ENUM nos campos de situação (status do exemplar - RF13).
+  - CHECK: devolução prevista não pode ser antes da retirada.
+  - Índices em título, nome e status para consultas rápidas (RNF04).
+  - FK com ON DELETE RESTRICT: não apaga livro/leitor com histórico (RN09).
+
+Para gerar o diagrama EER no MySQL Workbench a partir do script:
+  File > Import > Reverse Engineer MySQL Create Script
+  e selecione 05_Scripts_SQL/00_script_completo.sql.
+
+AJUSTES EM RELAÇÃO AO DIAGRAMA DE CLASSES (seção 9.4 do documento)
+Item                 Diagrama de classes  Banco de dados      Motivo
+-------------------  -------------------  ------------------  ----------------------------------------------------
+cpf (Leitor)         int                  CHAR(11)            CPF pode começar com zero e passa do limite do INT.
+telefone (Leitor)    int                  VARCHAR(15)         Tem DDD e zeros à esquerda; não é usado em cálculos.
+Livro e Autor        associação direta    tabela livro_autor  N:N exige tabela associativa.
+Usuário              não representado     tabela usuario      Login e perfil de acesso (RNF02, RNF03).
+status (Empréstimo)  String               ATIVO ou DEVOLVIDO  Atraso é calculado pela data (RN08).
+dataReserva          Date                 DATETIME            Hora ordena a fila com precisão (RN07).
+
+DICIONÁRIO DE DADOS
+(gerado a partir do banco criado pelo script)
+
+Tabela: editora
+Coluna      Tipo          Obrigatório  Chave / restrição   Padrão
+----------  ------------  -----------  ------------------  ------
+id_editora  INT           Sim          PK, AUTO_INCREMENT  -
+nome        VARCHAR(100)  Sim          UNIQUE              -
+cidade      VARCHAR(80)   Não          -                   -
+
+Tabela: autor
+Coluna    Tipo          Obrigatório  Chave / restrição   Padrão
+--------  ------------  -----------  ------------------  ------
+id_autor  INT           Sim          PK, AUTO_INCREMENT  -
+nome      VARCHAR(120)  Sim          -                   -
+
+Tabela: livro
+Coluna          Tipo          Obrigatório  Chave / restrição   Padrão
+--------------  ------------  -----------  ------------------  ------
+id_livro        INT           Sim          PK, AUTO_INCREMENT  -
+titulo          VARCHAR(200)  Sim          -                   -
+isbn            VARCHAR(13)   Não          UNIQUE              -
+ano_publicacao  SMALLINT      Não          -                   -
+genero          VARCHAR(60)   Não          -                   -
+id_editora      INT           Sim          FK → editora        -
+
+Tabela: livro_autor
+Coluna    Tipo  Obrigatório  Chave / restrição  Padrão
+--------  ----  -----------  -----------------  ------
+id_livro  INT   Sim          PK, FK → livro     -
+id_autor  INT   Sim          PK, FK → autor     -
+
+Tabela: exemplar
+Coluna          Tipo                                                        Obrigatório  Chave / restrição   Padrão
+--------------  ----------------------------------------------------------  -----------  ------------------  ------------
+id_exemplar     INT                                                         Sim          PK, AUTO_INCREMENT  -
+cod_patrimonio  VARCHAR(30)                                                 Sim          UNIQUE              -
+status          ENUM('DISPONIVEL','EMPRESTADO','RESERVADO','INDISPONIVEL')  Sim          -                   'DISPONIVEL'
+localizacao     VARCHAR(50)                                                 Não          -                   -
+id_livro        INT                                                         Sim          FK → livro          -
+
+Tabela: leitor
+Coluna         Tipo          Obrigatório  Chave / restrição   Padrão
+-------------  ------------  -----------  ------------------  -----------------
+id_leitor      INT           Sim          PK, AUTO_INCREMENT  -
+nome           VARCHAR(120)  Sim          -                   -
+cpf            CHAR(11)      Sim          UNIQUE              -
+email          VARCHAR(120)  Não          UNIQUE              -
+telefone       VARCHAR(15)   Não          -                   -
+data_cadastro  DATETIME      Sim          -                   CURRENT_TIMESTAMP
+
+Tabela: usuario
+Coluna      Tipo                            Obrigatório  Chave / restrição    Padrão
+----------  ------------------------------  -----------  -------------------  --------
+id_usuario  INT                             Sim          PK, AUTO_INCREMENT   -
+login       VARCHAR(50)                     Sim          UNIQUE               -
+senha_hash  VARCHAR(255)                    Sim          -                    -
+perfil      ENUM('ADMINISTRADOR','LEITOR')  Sim          -                    'LEITOR'
+ativo       TINYINT(1)                      Sim          -                    1
+id_leitor   INT                             Não          FK → leitor, UNIQUE  -
+
+Tabela: emprestimo
+Coluna                   Tipo                       Obrigatório  Chave / restrição   Padrão
+-----------------------  -------------------------  -----------  ------------------  -------
+id_emprestimo            INT                        Sim          PK, AUTO_INCREMENT  -
+data_emprestimo          DATE                       Sim          -                   -
+data_devolucao_prevista  DATE                       Sim          -                   -
+data_devolucao_real      DATE                       Não          -                   -
+status                   ENUM('ATIVO','DEVOLVIDO')  Sim          -                   'ATIVO'
+id_leitor                INT                        Sim          FK → leitor         -
+id_exemplar              INT                        Sim          FK → exemplar       -
+
+Tabela: reserva
+Coluna        Tipo                                                    Obrigatório  Chave / restrição   Padrão
+------------  ------------------------------------------------------  -----------  ------------------  -----------------
+id_reserva    INT                                                     Sim          PK, AUTO_INCREMENT  -
+data_reserva  DATETIME                                                Sim          -                   CURRENT_TIMESTAMP
+posicao_fila  INT                                                     Não          -                   -
+status        ENUM('AGUARDANDO','DISPONIVEL','ATENDIDA','CANCELADA')  Sim          -                   'AGUARDANDO'
+id_leitor     INT                                                     Sim          FK → leitor         -
+id_livro      INT                                                     Sim          FK → livro          -
